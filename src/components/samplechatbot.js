@@ -27,13 +27,13 @@ function SampleChatBot() {
   // Update height value in state and local storage
   const handleHeightChange = (value) => {
     setHeightValue(parseFloat(value));
-    localStorage.setItem('height', parseFloat(value));
+    sessionStorage.setItem('height', parseFloat(value));
   };
 
   // Update weight value in state and local storage
   const handleWeightChange = (value) => {
     setWeightValue(parseFloat(value));
-    localStorage.setItem('weight', parseFloat(value));
+    sessionStorage.setItem('weight', parseFloat(value));
   };
 
   return (
@@ -87,12 +87,12 @@ function SampleChatBot() {
           id: 'calculateBMI',
           message: () => {
            
-            const h=localStorage.getItem("height")
+            const h=sessionStorage.getItem("height")
             const heightInMeters = h / 100;
-            const w=localStorage.getItem("weight")
+            const w=sessionStorage.getItem("weight")
             const bmi = w / (heightInMeters * heightInMeters);
             const bmiCategory = getBMICategory(bmi);
-            localStorage.setItem("bmi",bmi);
+            sessionStorage.setItem("bmi",bmi);
             return `Your BMI is ${bmi.toFixed(2)}. ${bmiCategory}`;
           },
           end: true,
